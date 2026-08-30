@@ -1,5 +1,5 @@
-#ifndef Vec_h
-#define Vec_h
+#ifndef Vec2_h
+#define Vec2_h
 
 #include <cmath>
 class Vec2 {
