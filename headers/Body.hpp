@@ -7,9 +7,13 @@ class Shape{
 public:
     Vec2 pos;
     float angle;
+    bool isStatic = false;
 
-    Shape(Vec2 pos, float angle) : pos(pos), angle(angle) {};
+    ~Shape() {};
+    Shape(Vec2 pos, float angle, bool isStatic) : pos(pos), angle(angle), isStatic(isStatic) {};
+
 }; 
+
 class Body : public Shape {
 public:
 
@@ -25,9 +29,11 @@ public:
     float torque;
 
     ~Body(){};
-    Body(Vec2 pos, float angle, float mass, bool isStatic) : Shape(pos, angle), mass(mass){
+    Body(Vec2 pos, float angle, float mass, bool isStatic) : Shape(pos, angle, isStatic), mass(mass){
         if (isStatic) {
+            mass = 0;
             invMass = 0;
+            inertia = 0;
             invInertia = 0;
         } else {
             invMass = 1.0f / mass;
