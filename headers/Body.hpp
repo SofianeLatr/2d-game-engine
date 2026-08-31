@@ -25,7 +25,7 @@ public:
     float torque;
 
     ~Body(){};
-    Body(Vec2 pos, float angle, float mass, bool isStatic) : Shape(pos, angle), mass(mass), isStatic(isStatic) {
+    Body(Vec2 pos, float angle, float mass, bool isStatic) : Shape(pos, angle), mass(mass){
         if (isStatic) {
             invMass = 0;
             invInertia = 0;
