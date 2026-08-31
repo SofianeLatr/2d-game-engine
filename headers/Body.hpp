@@ -3,11 +3,16 @@
 
 #include "Vec2.hpp"
 
-class Body {
+class Shape{
 public:
-
     Vec2 pos;
     float angle;
+
+    Shape(Vec2 pos, float angle) : pos(pos), angle(angle) {};
+}; 
+class Body : public Shape {
+public:
+
     Vec2 vel;
     float angVel;
 
@@ -19,16 +24,14 @@ public:
     Vec2 force;
     float torque;
 
-    bool isStatic;
-
     ~Body(){};
-    Body(Vec2 pos, float angle, float mass, bool isStatic) : pos(pos), angle(angle), mass(mass), isStatic(isStatic) {
+    Body(Vec2 pos, float angle, float mass, bool isStatic) : Shape(pos, angle), mass(mass), isStatic(isStatic) {
         if (isStatic) {
             invMass = 0;
             invInertia = 0;
         } else {
             invMass = 1.0f / mass;
-            inertia = mass * 1.0f;
+            inertia = mass;
             invInertia = 1.0f / inertia;
         }
         vel = Vec2(0, 0);
@@ -37,7 +40,7 @@ public:
         torque = 0;
     }
 
-    void applyForce(Vec2 f){
+    void applyForce(const Vec2& f){
         force += f;
     }
     void applyTorque(float t){
