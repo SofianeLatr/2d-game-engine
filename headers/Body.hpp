@@ -12,7 +12,7 @@ public:
     ~Shape() {};
     Shape(Vec2 pos, float angle, bool isStatic) : pos(pos), angle(angle), isStatic(isStatic) {};
 
-}; 
+};
 
 class Body : public Shape {
 public:
