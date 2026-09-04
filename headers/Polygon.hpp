@@ -1,10 +1,20 @@
-#ifndef Rect_h
-#define Rect_h
+#ifndef Polygon_h
+#define Polygon_h
 
 #include "Body.hpp"
 #include <array>
 
-class Rect : public Body {
+template<int N>
+class Polygon : public Body {
+public:
+    static const int verticies = N;
+    std::array<Vec2, N> points;
+
+    Polygon(Vec2 pos, Vec2 size, float angle, float mass, bool isStatic);
+    ~Polygon();
+};
+
+class Rect : public Polygon<4> {
 public:
     std::array<Vec2, 4> points;
     Vec2 size;

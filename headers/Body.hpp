@@ -8,6 +8,7 @@ public:
     Vec2 pos;
     float angle;
     bool isStatic = false;
+    bool polygon = true;
 
     ~Shape() {};
     Shape(Vec2 pos, float angle, bool isStatic) : pos(pos), angle(angle), isStatic(isStatic) {};
